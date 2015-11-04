@@ -17,7 +17,7 @@ public class GUIClient extends GUIChat
    }
 
   //-------------------------------------------------------------------------//
-
+  @Override
   public Socket connect() throws IOException
   {
      return new Socket("localhost", 8080);

@@ -34,7 +34,7 @@ public abstract class    GUIChat
    }
 
    //-------------------------------------------------------------------------//
-
+   @Override
    public void init()
    {
       setupGUI();
@@ -48,6 +48,7 @@ public abstract class    GUIChat
 
   public void setupGUI()
   {
+      super.setLayout(null);
       add(logTA,      10,  10, 300, 200);
       add(messageTF,  10, 220, 240,  20, this);
       add(nameTF,    250, 220, 50,  20);
@@ -97,7 +98,7 @@ public abstract class    GUIChat
   }
 
   //-------------------------------------------------------------------------//
-
+  @Override
   public void run()
   {
      String message;
@@ -115,7 +116,7 @@ public abstract class    GUIChat
   }
 
    //-------------------------------------------------------------------------//
-
+   @Override
    public void actionPerformed(ActionEvent e)
    {
       try
@@ -132,10 +133,10 @@ public abstract class    GUIChat
    }
 
    //-------------------------------------------------------------------------//
-
+   
    public class OnlineListener implements ItemListener
    {
-
+      @Override
       public void itemStateChanged(ItemEvent e)
       {
          friendLT.add(onlineLT.getSelectedItem());
@@ -144,7 +145,7 @@ public abstract class    GUIChat
 
    public class FriendListener implements ItemListener
    {
-
+      @Override
       public void itemStateChanged(ItemEvent e)
       {
          friendLT.remove(friendLT.getSelectedIndex());

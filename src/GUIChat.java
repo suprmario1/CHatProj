@@ -1,6 +1,7 @@
 //----------------------------------------------------------------------------//
 
 import java.awt.*;
+import java.awt.Dialog;
 import java.awt.event.*;
 import java.applet.Applet;
 
@@ -37,6 +38,8 @@ public abstract class    GUIChat
    @Override
    public void init()
    {
+      setupDialog();
+      
       setupGUI();
 
       setupConnection();
@@ -45,6 +48,28 @@ public abstract class    GUIChat
   }
 
   //-------------------------------------------------------------------------//
+  public void setupDialog(){
+      Frame loginFrame = new Frame();
+      
+      TextField loginTF = new TextField();
+      Button loginBN= new Button("Login");
+      loginTF.setBounds(10,10,100,20);
+      loginBN.setBounds(10,40,100,20);
+      
+      Dialog loginDB = new Dialog(loginFrame);
+      loginDB.setLayout(null);
+      loginDB.setSize(150,100);
+      
+      loginDB.add(loginTF);
+      loginDB.add(loginBN);
+      
+      
+      loginDB.setVisible(true);
+      
+      
+      
+  
+  }
 
   public void setupGUI()
   {

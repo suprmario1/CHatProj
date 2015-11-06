@@ -3,7 +3,6 @@
 import java.awt.*;
 import java.awt.Dialog;
 import java.awt.event.*;
-import java.applet.Applet;
 
 import java.io.*;
 import java.net.*;
@@ -18,10 +17,17 @@ public abstract class    GUIChat
    TextArea   logTA     = new TextArea();
    TextField  messageTF = new TextField();
    TextField  nameTF    = new TextField();
+   TextField  loginTF   = new TextField();
+   Button     loginBN   = new Button("Login");
+   Frame      loginFrame= new Frame();
+   Dialog     loginDB   = new Dialog(loginFrame);
+   
    //Button     submitBN  = new Button("Submit");
 
    List       onlineLT = new List();
    List       friendLT = new List();
+   
+   String screenName = "";
 
    DataInputStream  input;
    DataOutputStream output;
@@ -48,15 +54,13 @@ public abstract class    GUIChat
   }
 
   //-------------------------------------------------------------------------//
-  public void setupDialog(){
-      Frame loginFrame = new Frame();
+  public void setupDialog(){     
+
+      loginTF.setBounds(10,30,100,20);
+      loginBN.setBounds(10,60,100,20);
+      loginBN.addActionListener(new LoginListener());
       
-      TextField loginTF = new TextField();
-      Button loginBN= new Button("Login");
-      loginTF.setBounds(10,10,100,20);
-      loginBN.setBounds(10,40,100,20);
       
-      Dialog loginDB = new Dialog(loginFrame);
       loginDB.setLayout(null);
       loginDB.setSize(150,100);
       
@@ -155,6 +159,15 @@ public abstract class    GUIChat
       catch(IOException x){};
 
 
+   }
+   
+   public class LoginListener implements ActionListener{
+       public void actionPerformed(ActionEvent e){
+           screenName=loginTF.getText();
+           nameTF.setText(screenName);
+           loginDB.dispose();
+           
+       }
    }
 
    //-------------------------------------------------------------------------//

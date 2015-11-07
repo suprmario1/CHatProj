@@ -164,8 +164,14 @@ public abstract class    GUIChat
    public class LoginListener implements ActionListener{
        public void actionPerformed(ActionEvent e){
            screenName=loginTF.getText();
+           try{
+              output.writeUTF("@@@@@:ADDU:" + screenName);
+           }
+           catch(IOException x){};
+
            nameTF.setText(screenName);
            loginDB.dispose();
+
            
        }
    }

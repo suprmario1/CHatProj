@@ -1,5 +1,6 @@
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 
 
 public class Server
@@ -10,6 +11,7 @@ public class Server
    ServerSocket server;
 
    ClientHandler[] clientHandler = new ClientHandler[N];
+   ArrayList<String> onlineNames= new ArrayList();
 
 
    public static void main(String[] args)
@@ -48,6 +50,8 @@ public class Server
    {
       DataInputStream  input;
       DataOutputStream output;
+      
+      ArrayList<String> friendList= new ArrayList();
 
 
       public ClientHandler()
@@ -64,17 +68,31 @@ public class Server
 
       public void run()
       {
+         String[] part;
          while(true)
          {
            try
             {
                String message = input.readUTF();
 
+               part=message.split(":");
+               if(part[0].equals("@@@@@")){
+                  if(part[1].equals("ADDU"))
+                    onlineNames.add(part[2]);
+                  else if(part[1].equals("ADDF"))
+                    friendList.add(part[2]);
+                  else if(part[1].equals("REMOVEF"));
+                  else if(part[1].equals("REMOVEU"));
+
+                    
+                  System.out.println(part[0]+" "+ part[1]+ " " +part[2]);
+               }
+
                for(int i = 0; i < n; i++)
 
                   //if(clientHandler[i] != this)
 
-                     clientHandler[i].output.writeUTF(message);
+                    clientHandler[i].output.writeUTF(message);
             }
             catch(IOException x){};
          }

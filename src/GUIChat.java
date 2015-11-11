@@ -131,12 +131,22 @@ public abstract class    GUIChat
   public void run()
   {
      String message;
+     String[] parts;
 
      while(true)
      {
         try
         {
            message = input.readUTF();
+           parts=message.split(":");
+              if(parts[0].equals("@@@@@"))
+              {
+                 if(parts[1].equals("ADDU"))
+                 {
+                     onlineLT.add(parts[2]);
+                     
+                 }
+              }
 
            logTA.append(message + "\n");
         }

@@ -62,6 +62,11 @@ public class Server
 
             input  = new DataInputStream(socket.getInputStream());
             output = new DataOutputStream(socket.getOutputStream());
+            for(int i=0;i<onlineNames.size();i++){
+                friendList.add(onlineNames.get(i));
+                output.writeUTF("@@@@@:ADDU:"+friendList.get(i));
+                
+            }
          }
          catch(IOException x){};
       }
@@ -78,21 +83,35 @@ public class Server
                part=message.split(":");
                if(part[0].equals("@@@@@")){
                   if(part[1].equals("ADDU"))
+                  {
                     onlineNames.add(part[2]);
+                    for(int i = 0; i < n; i++)
+
+                       clientHandler[i].output.writeUTF("@@@@@:ADDU:"+part[2]);
+                  }
                   else if(part[1].equals("ADDF"))
+                  {
                     friendList.add(part[2]);
-                  else if(part[1].equals("REMOVEF"));
-                  else if(part[1].equals("REMOVEU"));
+                    output.writeUTF("@@@@@:ADDF:"+part[2]);
+                  }
+                  else if(part[1].equals("REMOVEF")){
+
+                  }
+                  else if(part[1].equals("REMOVEU")){
+                      
+                  }
 
                     
                   System.out.println(part[0]+" "+ part[1]+ " " +part[2]);
                }
+               else{
 
-               for(int i = 0; i < n; i++)
+                for(int i = 0; i < n; i++)
 
-                  //if(clientHandler[i] != this)
+                   //if(clientHandler[i] != this)
 
-                    clientHandler[i].output.writeUTF(message);
+                     clientHandler[i].output.writeUTF(message);
+               }
             }
             catch(IOException x){};
          }

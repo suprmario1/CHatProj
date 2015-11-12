@@ -67,6 +67,14 @@ public class Server
                 output.writeUTF("@@@@@:ADDU:"+friendList.get(i));
                 
             }
+            //Testcode
+            for(int j=0;j<onlineNames.size();j++){
+                System.out.println("i:"+onlineNames.get(j));
+            }
+            for(int k=0;k<friendList.size();k++){
+                output.writeUTF("@@@@@:ADDF:"+friendList.get(k));
+                System.out.println("j:"+friendList.get(k));
+            }
          }
          catch(IOException x){};
       }
@@ -86,8 +94,11 @@ public class Server
                   {
                     onlineNames.add(part[2]);
                     for(int i = 0; i < n; i++)
-
+                //Testcode
                        clientHandler[i].output.writeUTF("@@@@@:ADDU:"+part[2]);
+                               for(int j=0;j<onlineNames.size();j++){
+                System.out.println("k:"+onlineNames.get(j));
+            }
                   }
                   else if(part[1].equals("ADDF"))
                   {

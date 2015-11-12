@@ -146,6 +146,11 @@ public abstract class    GUIChat
                      onlineLT.add(parts[2]);
                      
                  }
+                 else if(parts[1].equals("ADDF"))
+                 {
+                     friendLT.add(parts[2]);
+                     
+                 }
               }
 
            logTA.append(message + "\n");

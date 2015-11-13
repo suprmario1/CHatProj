@@ -71,10 +71,10 @@ public class Server
             for(int j=0;j<onlineNames.size();j++){
                 System.out.println("i:"+onlineNames.get(j));
             }
-            for(int k=0;k<friendList.size();k++){
-                output.writeUTF("@@@@@:ADDF:"+friendList.get(k));
-                System.out.println("j:"+friendList.get(k));
-            }
+//            for(int k=0;k<friendList.size();k++){
+//                output.writeUTF("@@@@@:ADDF:"+friendList.get(k));
+//                System.out.println("j:"+friendList.get(k));
+//            }
          }
          catch(IOException x){};
       }
@@ -103,17 +103,16 @@ public class Server
                   else if(part[1].equals("ADDF"))
                   {
                     friendList.add(part[2]);
-                    output.writeUTF("@@@@@:ADDF:"+part[2]);
                   }
                   else if(part[1].equals("REMOVEF")){
+                    friendList.remove(part[2]);
+                    output.writeUTF("@@@@@:REMOVEF:"+part[2]);
 
                   }
-                  else if(part[1].equals("REMOVEU")){
+//                  else if(part[1].equals("REMOVEU")){
                       
-                  }
+//                  }
 
-                    
-                  System.out.println(part[0]+" "+ part[1]+ " " +part[2]);
                }
                else{
 

@@ -87,15 +87,10 @@ public abstract class    GUIChat
       add(friendLT, 320, 120, 100, 100);
 
 
-      onlineLT.add("Pedro");
-      onlineLT.add("Aysmel");
-      onlineLT.add("Brian");
-
       onlineLT.addItemListener(new OnlineListener());
 
       friendLT.addItemListener(new FriendListener());
-      friendLT.add("Pedro");
-      friendLT.add("Aysmel");
+
 
   }
 
@@ -199,6 +194,10 @@ public abstract class    GUIChat
       public void itemStateChanged(ItemEvent e)
       {
          friendLT.add(onlineLT.getSelectedItem());
+         try{
+             output.writeUTF("@@@@@:ADDF:" + onlineLT.getSelectedItem());
+         }
+         catch(IOException x){};
       }
    }
 
@@ -208,6 +207,10 @@ public abstract class    GUIChat
       public void itemStateChanged(ItemEvent e)
       {
          friendLT.remove(friendLT.getSelectedIndex());
+         try{
+             output.writeUTF("@@@@@:REMOVEF:" + onlineLT.getSelectedItem());
+         }
+         catch(IOException x){};         
       }
    }
 

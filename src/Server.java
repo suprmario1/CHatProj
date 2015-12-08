@@ -50,6 +50,7 @@ public class Server
    {
       DataInputStream  input;
       DataOutputStream output;
+      String Hname;
       
       ArrayList<String> friendList= new ArrayList();
 
@@ -96,8 +97,8 @@ public class Server
                     for(int i = 0; i < n; i++)
                 //Testcode
                        clientHandler[i].output.writeUTF("@@@@@:ADDU:"+part[2]);
-                               for(int j=0;j<onlineNames.size();j++){
-                System.out.println("k:"+onlineNames.get(j));
+                    for(int j=0;j<onlineNames.size();j++){
+                    System.out.println("k:"+onlineNames.get(j));
             }
                   }
                   else if(part[1].equals("ADDF"))
@@ -108,6 +109,9 @@ public class Server
                     friendList.remove(part[2]);
                     output.writeUTF("@@@@@:REMOVEF:"+part[2]);
 
+                  }
+                  else if(part[1].equals("NAME")){
+                      Hname=part[2];
                   }
 //                  else if(part[1].equals("REMOVEU")){
                       

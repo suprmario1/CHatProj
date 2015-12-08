@@ -176,6 +176,7 @@ public abstract class    GUIChat
            screenName=loginTF.getText();
            try{
               output.writeUTF("@@@@@:ADDU:" + screenName);
+              output.writeUTF("@@@@@:NAME:" + screenName);
            }
            catch(IOException x){};
 
@@ -206,9 +207,10 @@ public abstract class    GUIChat
       @Override
       public void itemStateChanged(ItemEvent e)
       {
+         String dude= friendLT.getSelectedItem();
          friendLT.remove(friendLT.getSelectedIndex());
          try{
-             output.writeUTF("@@@@@:REMOVEF:" + onlineLT.getSelectedItem());
+             output.writeUTF("@@@@@:REMOVEF:" + dude);
          }
          catch(IOException x){};         
       }
